@@ -68,12 +68,21 @@ class App:
             self.win("O")
         elif self.flag == self.N**2:
             tkMessageBox.showinfo("Game Complete", "This is a tie.")
-            self.app.destroy()
+            self.ExitApplication()
 
     def win(self, player):
         ans = f"Game complete, player {player} won."
         tkMessageBox.showinfo("Game Complete", ans)
-        self.app.destroy()
+        self.ExitApplication()
+
+    def ExitApplication(self):
+        MsgBox = tk.messagebox.askquestion('New Game', 'Do you want to start a new game? ',
+                                           icon='warning')
+        if MsgBox == 'yes':
+            self.app.destroy()
+            main()
+        else:
+            self.app.destroy()
 
 
 def main():
